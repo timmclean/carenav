@@ -1,0 +1,86 @@
+* {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+}
+
+.wrapper {
+	margin: 0 auto;
+
+	width: 100%;
+	height: 100%;
+	max-width: 600px;
+
+	padding: 14px 16px;
+
+	.patients {
+		width: 100%;
+
+		.patient {
+			.name {
+				display: block;
+				float: left;
+			}
+
+			.viewResults.btn {
+				display: block;
+				float: right;
+			}
+
+			.assign.btn {
+				display: block;
+				float: right;
+			}
+		}
+	}
+}
+
+.loadingIndicator {
+	display: none;
+}
+
+.loading {
+	> * {
+		display: none;
+	}
+
+	> .loadingIndicator {
+		display: table;
+
+		margin: 50px auto;
+	}
+}
+
+.errorMsgIndicator {
+	display: none;
+}
+
+.errorMsg {
+	> * {
+		display: none;
+	}
+
+	> .errorMsgIndicator {
+		display: table;
+
+		margin: 50px auto;
+	}
+}
+
+// Some fixes for bootstrap elements
+.typeahead {
+	z-index: 1051;
+}
+input[type=text] {
+	height: 28px;
+}
+

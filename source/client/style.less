@@ -1,0 +1,109 @@
+* {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+
+	background: url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/bedge_grunge.png);
+}
+
+.wrapper {
+	margin: 40px auto 0 auto;
+
+	width: 100%;
+	height: 100%;
+	max-width: 600px;
+
+	.patientInfo {
+		padding: 14px 16px;
+
+		h1 {
+			font-family: Lobster;
+			font-weight: normal;
+		}
+
+		.treatementPlan > .name {
+			margin-left: 4px;
+			margin-bottom: 4px;
+		}
+
+		.surveys tr.survey {
+			&.completed {
+				> td.status {
+					.icon-ok-sign {
+						display: inline-block !important;
+					}
+
+					.icon-exclamation-sign {
+						display: none !important;
+					}
+				}
+
+				> td.link {
+					a {
+						display: none;
+					}
+
+					.name {
+						display: block;
+					}
+				}
+			}
+
+			> td.status {
+				text-align: right !important;
+
+				.icon-ok-sign {
+					display: none;
+				}
+			}
+
+			> td.link {
+				a {
+					display: block;
+				}
+
+				.name {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+.survey.modal {
+	width: 700px;
+}
+
+.loadingIndicator {
+	display: none;
+}
+
+.loading {
+	> * {
+		display: none;
+	}
+
+	> .loadingIndicator {
+		display: table;
+
+		margin: 50px auto;
+	}
+}
+
+// Some fixes for bootstrap elements
+.typeahead {
+	z-index: 1051;
+}
+input[type=text] {
+	height: 28px;
+}
+

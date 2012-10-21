@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CareNav</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("lib/bootstrap-2.1.1.css");
+@import url("style.css");
+	</style>
+</head>
+<body>
+	<noscript>
+		<h1>JavaScript is required to use this application.</h1>
+	</noscript>
+
+	<div class="wrapper"></div>
+
+	<div class="survey modal hide"></div>
+
+	<script class="main template" type="text/html">
+		<div class="patientInfo"></div>
+
+		<%= templates.render('loadingIndicator') %>
+	</script>
+
+	<script class="patientInfo template" type="text/html">
+		<h1 class="name"><%- obj.name %></h1>
+		<div class="treatmentPlan">
+			<div class="name"><%- obj.treatmentPlan.name %></div>
+			<div class="progress">
+				<div class="bar" style="width: <%-
+				 obj.treatmentPlan.completedSessionCount /
+				 obj.treatmentPlan.sessionCount * 100 %>%">
+					<%- obj.treatmentPlan.completedSessionCount %>
+					/
+					<%- obj.treatmentPlan.sessionCount %>
+				</div>
+			</div>
+			<div class="details"><%- obj.treatmentPlan.details %></div>
+		</div>
+		<div>
+			<table class="table table-striped">
+				<tbody class="surveys">
+				</tbody>
+			</table>
+
+			<%= templates.render('loadingIndicator') %>
+		</div>
+	</script>
+
+	<script class="surveyListItem template" type="text/html">
+		<% if (!obj.isComplete) { %>
+		<tr class="survey" data-id="<%- obj.id %>">
+			<td class="link">
+				<a href="javascript:void(null)"><%- obj.name %></a>
+				<span class="name"><%- obj.name %></span>
+			</td>
+			<td class="status">
+				<i class="icon-exclamation-sign"></i>
+				<i class="icon-ok-sign"></i>
+			</td>
+		</tr>
+		<% } %>
+	</script>
+
+	<script class="surveyModal template" type="text/html">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3><%- obj.name %></h3>
+		</div>
+		<div class="modal-body">
+			<form method="GET" action="#">
+				<%= _.template(obj.htmlTemplate)(obj) %>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="submit btn btn-primary">Complete</button>
+			<button type="button" class="btn" data-dismiss="modal">Close</button>
+		</div>
+	</script>
+
+	<script class="loadingIndicator template" type="text/html">
+		<img class="loadingIndicator" src="loading.gif">
+	</script>
+
+	<script src="lib/jquery-1.8.2.js"></script>
+	<script src="lib/bootstrap-2.1.1.js"></script>
+	<script src="lib/moment-1.7.0.js"></script>
+	<script src="lib/underscore-1.3.3.js"></script>
+	<script src="server.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
+
